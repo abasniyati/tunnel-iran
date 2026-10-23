@@ -1,0 +1,7 @@
+*.key
+*.conf.local
+client.conf
+client-config.tar.gz
+.env
+*.log
+.DS_Store
