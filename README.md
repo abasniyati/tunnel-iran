@@ -36,8 +36,8 @@ Do not pipe an unreviewed remote script directly into a root shell. Upload/clone
 
 ```bash
 cd tunnel-iran
-sudo ./test-harness.sh
-sudo ./install.sh
+sudo bash ./test-harness.sh
+sudo bash ./install.sh
 ```
 
 `install.sh` copies the supported scripts to `/usr/local/lib/tunnel-iran/` and installs the sample settings at `/etc/tunnel/tunnel.conf` only if that file does not already exist. Review/edit `/etc/tunnel/tunnel.conf` on both servers before deployment. The config is a Bash file and is sourced by the scripts; only use a file you control.
