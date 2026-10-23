@@ -18,3 +18,24 @@ The client.conf is generated on the foreign server at:
   /etc/tunnel/client-configs/client.conf
 and packaged in client-config.tar.gz. Transfer it securely; it contains a private key.
 MSG
+#!/bin/bash
+set -euo pipefail
+
+# ─────────────────────────────────────────────────────────────
+# install.sh — One-line installer
+# Usage:
+# curl -sSL https://raw.githubusercontent.com/abasniyati/tunnel-iran/main/install.sh | sudo bash -s -- iran
+# curl -sSL https://raw.githubusercontent.com/abasniyati/tunnel-iran/main/install.sh | sudo bash -s -- foreign
+# ─────────────────────────────────────────────────────────────
+
+ROLE="${1:-iran}"
+REPO="https://raw.githubusercontent.com/abasniyati/tunnel-iran/main"
+
+if [[ "$ROLE" == "foreign" ]]; then
+ curl -sSL "$REPO/scripts/tunnel-server.sh" | sudo bash
+elif [[ "$ROLE" == "iran" ]]; then
+ curl -sSL "$REPO/scripts/tunnel-client.sh" | sudo bash
+else
+ echo "Usage: install.sh [foreign|iran]" >&2
+ exit 1
+fi
